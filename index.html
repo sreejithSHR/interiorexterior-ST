@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ST Interiors & Exteriors - Design Your Dream</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Color Theme Override: Maroon primary + Sandal light -->
+    <style>
+        /* ---- BOOTSTRAP CSS VARIABLE OVERRIDES (kills the default blue) ---- */
+        :root {
+            --bs-primary:                   #8B1A2A;
+            --bs-primary-rgb:               139, 26, 42;
+            --bs-light:                     #FAF3E8;
+            --bs-light-rgb:                 250, 243, 232;
+            --bs-link-color:                #8B1A2A;
+            --bs-link-hover-color:          #6E1422;
+            --bs-focus-ring-color:          rgba(139, 26, 42, .25);
+
+            /* Button primary vars (Bootstrap 5.2+) */
+            --bs-btn-bg:                    #8B1A2A;
+            --bs-btn-border-color:          #8B1A2A;
+            --bs-btn-hover-bg:              #6E1422;
+            --bs-btn-hover-border-color:    #6E1422;
+            --bs-btn-active-bg:             #6E1422;
+            --bs-btn-focus-shadow-rgb:      139, 26, 42;
+        }
+
+        /* ---- UTILITY CLASS OVERRIDES ---- */
+        .bg-primary                         { background-color: #8B1A2A !important; }
+        .text-primary                       { color: #8B1A2A !important; }
+        .border-primary                     { border-color: #8B1A2A !important; }
+
+        /* Light → warm sandal cream (NO cold white/blue) */
+        .bg-light                           { background-color: #FAF3E8 !important; }
+        body                                { background-color: #FAF3E8; }
+
+        /* Links */
+        a                                   { color: #8B1A2A; }
+        a:hover                             { color: #6E1422; }
+
+        /* ---- BUTTONS ---- */
+        .btn-primary                        { background-color: #8B1A2A !important; border-color: #8B1A2A !important; color: #fff !important; }
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active                 { background-color: #6E1422 !important; border-color: #6E1422 !important; }
+        .btn-primary:focus                  { box-shadow: 0 0 0 .25rem rgba(139, 26, 42, .4) !important; }
+
+        .btn-outline-primary                { color: #8B1A2A !important; border-color: #8B1A2A !important; }
+        .btn-outline-primary:hover,
+        .btn-outline-primary:focus,
+        .btn-outline-primary:active         { background-color: #8B1A2A !important; border-color: #8B1A2A !important; color: #fff !important; }
+        .btn-outline-primary:focus          { box-shadow: 0 0 0 .25rem rgba(139, 26, 42, .4) !important; }
+
+        /* ---- FORM FOCUS (kills blue focus ring) ---- */
+        .form-control:focus                 { border-color: #8B1A2A !important; box-shadow: 0 0 0 .25rem rgba(139, 26, 42, .25) !important; }
+
+        /* ---- SPINNER ---- */
+        .spinner-grow.text-primary,
+        .text-primary.spinner-grow          { color: #C8A878 !important; }
+
+        /* ---- DROPDOWN ---- */
+        .navbar .dropdown-menu .dropdown-item:hover,
+        .navbar .dropdown-menu .dropdown-item.active { background: #8B1A2A !important; color: #fff !important; }
+
+        /* ---- HERO CAROUSEL stripe ---- */
+        .header-carousel::before            { background: #8B1A2A; }
+
+        /* ---- TESTIMONIAL stripes ---- */
+        .testimonial-img::before            { background: #8B1A2A; }
+        .testimonial-text h5::before        { background: #8B1A2A; }
+        .testimonial-carousel .owl-dot      { border-color: #8B1A2A; }
+        .testimonial-carousel .owl-dot.active { background: #8B1A2A; }
+
+        /* ---- TEAM overlay badge ---- */
+        .team-overlay small                 { background: #8B1A2A; }
+
+        /* ---- SERVICE cards hover swap ---- */
+        .service-item.bg-primary:hover                      { background: #FAF3E8 !important; }
+        .service-item.bg-light:hover                        { background: #8B1A2A !important; }
+        .service-item.bg-primary .service-img h3            { background: #8B1A2A; color: #fff; }
+        .service-item.bg-primary:hover .service-img h3      { background: #FAF3E8; color: #212529; }
+        .service-item.bg-light .service-img h3              { background: #FAF3E8; color: #212529; }
+        .service-item.bg-light:hover .service-img h3        { background: #8B1A2A; color: #fff; }
+        .service-item.bg-primary p                          { color: #FAF3E8; }
+        .service-item.bg-primary:hover p                    { color: #6c757d; }
+        .service-item.bg-light:hover p                      { color: #FAF3E8; }
+
+        /* ---- BACK TO TOP ---- */
+        .btn-primary.back-to-top            { background-color: #8B1A2A !important; border-color: #8B1A2A !important; }
+
+        /* ==============================
+           NAVBAR — fully maroon
+        ================================= */
+
+        /* Always maroon on mobile (override the top: -150px hide) */
+        @media (max-width: 991.98px) {
+            .sticky-top                     { top: 0 !important; background-color: #8B1A2A !important; }
+            .navbar-collapse                { background-color: #8B1A2A; padding: 12px 0 16px; }
+            .navbar .dropdown-menu          { background-color: #6E1422 !important; border: none; }
+            .navbar .dropdown-menu .dropdown-item { color: #FAF3E8 !important; }
+        }
+        /* Desktop: when JS adds bg-white on scroll → keep maroon */
+        .sticky-top.bg-white                { background-color: #8B1A2A !important; }
+        .sticky-top.bg-white.shadow-sm      { box-shadow: 0 2px 14px rgba(94,13,24,.4) !important; }
+
+        /* Nav brand & link colours — white on maroon */
+        .navbar-brand h1                    { color: #fff !important; }
+        .navbar .navbar-nav .nav-link       { color: rgba(255,255,255,.88) !important; }
+        .navbar .navbar-nav .nav-link:hover,
+        .navbar .navbar-nav .nav-link.active{ color: #FAF3E8 !important; }
+
+        /* Hamburger icon — white lines */
+        .navbar-toggler                     { border-color: rgba(255,255,255,.45) !important; }
+        .navbar-toggler-icon                { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; }
+        /* ================================ */
+
+        /* ---- MOBILE CONTENT CENTERING ---- */
+        @media (max-width: 991.98px) {
+            /* Hero text centred on mobile */
+            .hero-header .col-lg-6:first-child  { text-align: center; }
+            .hero-header h5                     { display: block !important; padding-left: 1rem !important; padding-right: 1rem !important; width: 100%; box-sizing: border-box; }
+            /* Hero top padding so content doesn't hide under fixed navbar */
+            .hero-header                        { margin-top: 0 !important; padding-top: 80px !important; }
+            /* About text centred */
+            .about-text-col                     { text-align: center; }
+            .about-text-col .d-flex             { justify-content: center; }
+        }
+
+        /* ---- FOOTER MAROON ---- */
+        .footer-maroon                          { background-color: #5E0D18 !important; }
+
+        /* ---- FIX RIGHT-SIDE OVERFLOW (Bootstrap gutter bleed) ---- */
+        html, body                              { overflow-x: hidden; }
+
+        /* ---- HEADINGS: bigger, bolder, centered ---- */
+        h1, h2, h3, h4, h5                      { font-weight: 700 !important; }
+
+        /* Hero h1 — stays large, left on desktop / centered on mobile */
+        .hero-header h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem) !important;
+            font-weight: 800 !important;
+            line-height: 1.1;
+        }
+        @media (max-width: 991.98px) {
+            .hero-header h1                     { text-align: center !important; }
+        }
+
+        /* All other section h1s — centered, large, impactful */
+        #about h1,
+        #features h1,
+        #projects h1,
+        #services h1,
+        .newsletter-text h1,
+        #testimonial h3 {
+            text-align: center !important;
+            font-size: clamp(2.2rem, 4vw, 3rem) !important;
+            font-weight: 800 !important;
+            line-height: 1.2;
+        }
+
+        /* Services section left-col h1 also centered on all sizes */
+        #services .col-lg-5 h1                  { text-align: center !important; }
+
+        /* Highlighted word inside headings — make the span pop more */
+        h1 span.text-primary                    { font-size: inherit; }
+
+        /* ---- HERO YELLOW/WARM TONE ---- */
+        /* Strip the blue bg-image from the element, put it on ::before with a warm filter */
+        .hero-header {
+            position: relative;
+            background-color: #FAF3E8 !important;
+            background-image: none !important;
+        }
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url(img/hero-bg.jpg) top center / cover no-repeat;
+            filter: sepia(0.25) saturate(0.85) brightness(1.12);
+            z-index: 0;
+        }
+        /* Keep all hero content above the filtered bg */
+        .hero-header > .container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
+                <a href="st-interiors.html" class="navbar-brand">
+                    <h1>ST INTERIORS</h1>
+                </a>
+                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="#hero" class="nav-item nav-link active">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#features" class="nav-item nav-link">Why Us</a>
+                        <a href="#projects" class="nav-item nav-link">Projects</a>
+                        <a href="#services" class="nav-item nav-link">Services</a>
+                        <a href="#testimonial" class="nav-item nav-link">Reviews</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Hero Start -->
+    <div id="hero" class="container-fluid pb-5 hero-header bg-light mb-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h1 class="display-1 mb-4 animated slideInRight">We Make Your <span class="text-primary">Space</span>
+                        Better</h1>
+                    <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight">
+                        Design Your Dream — ACP & Interior Experts</h5>
+                </div>
+                <div class="col-lg-6">
+                    <div class="owl-carousel header-carousel animated fadeIn">
+                        <img class="img-fluid" src="img/hero-slider-1.jpg" alt="">
+                        <img class="img-fluid" src="img/hero-slider-2.jpg" alt="">
+                        <img class="img-fluid" src="img/hero-slider-3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 animated fadeIn">
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-building text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">ACP Resort Work</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-lightbulb text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">LED Designs</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-hard-hat text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">Roofing & Welding</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-home text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">House of Plywood</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- About Start -->
+    <div id="about" class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
+                            <img class="img-fluid" src="img/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
+                            <img class="img-fluid h-75" src="img/about-2.jpg" alt="">
+                            <div class="h-25 d-flex align-items-center text-center bg-primary px-4">
+                                <h4 class="text-white lh-base mb-0">Craftsmanship & Passion for Design</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 about-text-col wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-5"><span class="text-uppercase text-primary bg-light px-2">About</span> ST Interiors &amp; Exteriors</h1>
+                    <p class="mb-4">We transform your ideas into modern, functional, and aesthetically stunning spaces. With years of craftsmanship and a passion for design, we deliver high-quality interior and exterior solutions for homes, commercial spaces, industries, and premium projects.</p>
+                    <p class="mb-5">Every project is handled with care, creativity, and commitment to deliver long-lasting beauty and value. We don't just design spaces — we design your dreams.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>ACP Excellence</h6>
+                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Expert Craftsmanship</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Premium Materials</h6>
+                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Budget Friendly</h6>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mt-5">
+                        <a class="btn btn-primary px-4 me-2" href="#services">Our Services</a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2" href="#!"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    <div id="features" class="container-fluid py-5">
+        <div class="container">
+            <div class="text-center wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="mb-5">Why People <span class="text-uppercase text-primary bg-light px-2">Choose Us</span>
+                </h1>
+            </div>
+            <div class="row g-5 align-items-center text-center">
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <i class="fa fa-building fa-5x text-primary mb-4"></i>
+                    <h4>ACP Resort Work</h4>
+                    <p class="mb-0">Luxury-style ACP resort structures with seamless finishes, modern designs, and weather-proof materials built with excellence.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <i class="fa fa-layer-group fa-5x text-primary mb-4"></i>
+                    <h4>ACP Elevation Work</h4>
+                    <p class="mb-0">Long-lasting ACP elevation solutions with custom colors, heat and weather resistance. Perfect for commercial, industrial, and residential properties.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <i class="fa fa-lightbulb fa-5x text-primary mb-4"></i>
+                    <h4>LED Designs</h4>
+                    <p class="mb-0">Custom LED signage, backlit panels, and architectural LED designs. Our LED concepts add life, identity, and elegance to your brand or home.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <i class="fa fa-hard-hat fa-5x text-primary mb-4"></i>
+                    <h4>Roofing & Welding</h4>
+                    <p class="mb-0">Skilled welding team delivering precision and safety in every fabrication — homes, industrial sheds, commercial buildings, and customized structures.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <i class="fa fa-home fa-5x text-primary mb-4"></i>
+                    <h4>All Interiors & Exteriors</h4>
+                    <p class="mb-0">Complete interior and exterior solutions for homes, commercial spaces, industries, and premium projects — from concept to completion.</p>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <i class="fa fa-cubes fa-5x text-primary mb-4"></i>
+                    <h4>House of Plywood</h4>
+                    <p class="mb-0">Premium plywood sheets, laminates & veneers, MDF boards, WPC & industry-grade materials. Your one-stop solution for all plywood needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+    <!-- Project Start -->
+    <div id="projects" class="container-fluid mt-5">
+        <div class="container mt-5">
+            <div class="row g-0">
+                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column justify-content-center bg-primary h-100 p-5">
+                        <h1 class="text-white mb-5">Our Latest <span
+                                class="text-uppercase text-primary bg-light px-2">Projects</span></h1>
+                        <h4 class="text-white mb-0"><span class="display-1">6</span> of our latest projects</h4>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/project-1.jpg" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">ACP Resort</h4>
+                                    <small class="text-white">Luxury Structures</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/project-2.jpg" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">ACP Elevation</h4>
+                                    <small class="text-white">Modern Facades</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/project-3.jpg" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">LED Designs</h4>
+                                    <small class="text-white">Illumination</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/project-4.jpg" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">Interiors</h4>
+                                    <small class="text-white">Full Fit-outs</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.6s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/project-5.jpg" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">Plywood</h4>
+                                    <small class="text-white">Premium Materials</small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.7s">
+                            <div class="project-item position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/project-6.jpg" alt="">
+                                <a class="project-overlay text-decoration-none" href="#!">
+                                    <h4 class="text-white">Roofing</h4>
+                                    <small class="text-white">Welding Works</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project End -->
+
+
+    <!-- Service Start -->
+    <div id="services" class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="mb-5">Our Creative <span
+                            class="text-uppercase text-primary bg-light px-2">Services</span></h1>
+                    <p>We specialize in ACP resort structures, elevation work, LED illumination, roofing & welding, complete interiors & exteriors, and premium plywood supply.</p>
+                    <p class="mb-5">From concept to completion, every project is handled with care, creativity, and commitment to deliver long-lasting beauty and value.</p>
+                    <div class="d-flex align-items-center bg-light">
+                        <div class="btn-square flex-shrink-0 bg-primary" style="width: 100px; height: 100px;">
+                            <i class="fa fa-phone fa-2x text-white"></i>
+                        </div>
+                        <div class="px-3">
+                            <h3>hello@reallygreatsite.com</h3>
+                            <span>Call us or email us for a free consultation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-0">
+                        <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
+                            <div class="service-item h-100 d-flex flex-column justify-content-center bg-primary">
+                                <a href="#!" class="service-img position-relative mb-4">
+                                    <img class="img-fluid w-100" src="img/service-1.jpg" alt="">
+                                    <h3>ACP Resort Work</h3>
+                                </a>
+                                <p class="mb-0">Luxury-style ACP resort structures with seamless finishes, modern designs, and weather-proof materials built with excellence.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
+                            <div class="service-item h-100 d-flex flex-column justify-content-center bg-light">
+                                <a href="#!" class="service-img position-relative mb-4">
+                                    <img class="img-fluid w-100" src="img/service-2.jpg" alt="">
+                                    <h3>ACP Elevation</h3>
+                                </a>
+                                <p class="mb-0">Custom colors, heat & weather resistance with long-lasting durability for commercial, industrial, and residential properties.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow fadeIn" data-wow-delay="0.6s">
+                            <div class="service-item h-100 d-flex flex-column justify-content-center bg-light">
+                                <a href="#!" class="service-img position-relative mb-4">
+                                    <img class="img-fluid w-100" src="img/service-3.jpg" alt="">
+                                    <h3>LED Designs</h3>
+                                </a>
+                                <p class="mb-0">Custom LED signage, backlit panels, and architectural LED designs that add life, identity, and elegance to your brand or home.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow fadeIn" data-wow-delay="0.8s">
+                            <div class="service-item h-100 d-flex flex-column justify-content-center bg-primary">
+                                <a href="#!" class="service-img position-relative mb-4">
+                                    <img class="img-fluid w-100" src="img/service-4.jpg" alt="">
+                                    <h3>Roofing & Welding</h3>
+                                </a>
+                                <p class="mb-0">Skilled welding team delivering precision and safety in every fabrication for homes, sheds, commercial buildings, and custom structures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+
+    <!-- Testimonial Start -->
+    <div id="testimonial" class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-9">
+                    <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.2s">
+                        <div class="testimonial-item">
+                            <div class="row g-5 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="testimonial-img">
+                                        <img class="img-fluid" src="img/testimonial-1.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="testimonial-text pb-5 pb-md-0">
+                                        <h3>Stunning ACP Work</h3>
+                                        <p>The ACP elevation work done by ST Interiors completely transformed our building facade. Seamless finish, durable material, and delivered on time. Absolutely professional!</p>
+                                        <h5 class="mb-0">Rajesh Kumar</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="row g-5 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="testimonial-img">
+                                        <img class="img-fluid" src="img/testimonial-2.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="testimonial-text pb-5 pb-md-0">
+                                        <h3>Beautiful LED Signage</h3>
+                                        <p>Our shop front LED design is getting compliments every day. ST Interiors understood our brand and delivered a design that truly adds identity and elegance.</p>
+                                        <h5 class="mb-0">Priya Sharma</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="row g-5 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="testimonial-img">
+                                        <img class="img-fluid" src="img/testimonial-3.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="testimonial-text pb-5 pb-md-0">
+                                        <h3>Premium Interiors</h3>
+                                        <p>From plywood selection to the final interior fit-out, ST Interiors handled everything with care and creativity. Our home looks exactly like we dreamed it would.</p>
+                                        <h5 class="mb-0">Anil Mathew</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- Newsletter Start -->
+    <div id="contact" class="container-fluid bg-primary newsletter p-0">
+        <div class="container p-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
+                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="">
+                </div>
+                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-5">
+                        <h1 class="mb-5">Get a <span
+                                class="text-uppercase text-primary bg-white px-2">Free Quote</span></h1>
+                        <div class="position-relative w-100 mb-2">
+                            <input class="form-control border-0 w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 60px;">
+                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-2 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                        </div>
+                        <p class="mb-0">Contact us at hello@reallygreatsite.com — 123 Anywhere St., Any City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer-maroon text-white-50 footer pt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <a href="st-interiors.html" class="d-inline-block mb-3">
+                        <h1 class="text-white">ST INTERIORS</h1>
+                    </a>
+                    <p class="mb-0">We transform your ideas into modern, functional, and aesthetically stunning spaces. Design Your Dream — We Inspire Your Style!</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <h5 class="text-white mb-4">Get In Touch</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Anywhere St., Any City</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope me-3"></i>hello@reallygreatsite.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a class="btn btn-link" href="#about">About Us</a>
+                    <a class="btn btn-link" href="#contact">Contact Us</a>
+                    <a class="btn btn-link" href="#!">Privacy Policy</a>
+                    <a class="btn btn-link" href="#!">Terms & Condition</a>
+                    <a class="btn btn-link" href="#!">Career</a>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h5 class="text-white mb-4">Our Services</h5>
+                    <a class="btn btn-link" href="#services">ACP Resort Work</a>
+                    <a class="btn btn-link" href="#services">ACP Elevation Work</a>
+                    <a class="btn btn-link" href="#services">LED Designs</a>
+                    <a class="btn btn-link" href="#services">Roofing & Welding</a>
+                    <a class="btn btn-link" href="#services">House of Plywood</a>
+                </div>
+            </div>
+        </div>
+        <div class="container wow fadeIn" data-wow-delay="0.1s">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#!">ST Interiors & Exteriors</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="#!">Home</a>
+                            <a href="#!">Cookies</a>
+                            <a href="#!">Help</a>
+                            <a href="#!">FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#!" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
