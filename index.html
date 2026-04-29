@@ -118,16 +118,21 @@
            NAVBAR — fully maroon
         ================================= */
 
-        /* Always maroon on mobile (override the top: -150px hide) */
+        /* Always visible, always maroon — all screen sizes */
+        .sticky-top                         { top: 0 !important; background-color: #8B1A2A !important; }
+        .sticky-top.bg-white                { background-color: #8B1A2A !important; }
+        .sticky-top.bg-white.shadow-sm      { box-shadow: 0 2px 14px rgba(94,13,24,.4) !important; }
+
+        /* Hero: remove the negative pull-up margin now that navbar is always present */
+        .hero-header                        { margin-top: 0 !important; padding-top: 90px !important; }
+
+        /* Mobile collapsed menu */
         @media (max-width: 991.98px) {
-            .sticky-top                     { top: 0 !important; background-color: #8B1A2A !important; }
             .navbar-collapse                { background-color: #8B1A2A; padding: 12px 0 16px; }
             .navbar .dropdown-menu          { background-color: #6E1422 !important; border: none; }
             .navbar .dropdown-menu .dropdown-item { color: #FAF3E8 !important; }
+            .hero-header                    { padding-top: 80px !important; }
         }
-        /* Desktop: when JS adds bg-white on scroll → keep maroon */
-        .sticky-top.bg-white                { background-color: #8B1A2A !important; }
-        .sticky-top.bg-white.shadow-sm      { box-shadow: 0 2px 14px rgba(94,13,24,.4) !important; }
 
         /* Nav brand & link colours — white on maroon */
         .navbar-brand h1                    { color: #fff !important; }
@@ -140,23 +145,143 @@
         .navbar-toggler-icon                { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; }
         /* ================================ */
 
-        /* ---- MOBILE CONTENT CENTERING ---- */
+        /* ============================================================
+           MOBILE FIXES — comprehensive spacing & alignment
+        ============================================================ */
         @media (max-width: 991.98px) {
-            /* Hero text centred on mobile */
+            /* Hero */
             .hero-header .col-lg-6:first-child  { text-align: center; }
-            .hero-header h5                     { display: block !important; padding-left: 1rem !important; padding-right: 1rem !important; width: 100%; box-sizing: border-box; }
-            /* Hero top padding so content doesn't hide under fixed navbar */
-            .hero-header                        { margin-top: 0 !important; padding-top: 80px !important; }
-            /* About text centred */
+            .hero-header h5                     { display: block !important; padding-left: 1rem !important; padding-right: 1rem !important; width: 100%; box-sizing: border-box; font-size: .95rem !important; }
+            .hero-header h1                     { text-align: center !important; }
+
+            /* Tighten row gutters across all sections */
+            .row.g-5                            { --bs-gutter-x: 1.25rem; --bs-gutter-y: 2rem; }
+            .row.g-4                            { --bs-gutter-x: 1rem;    --bs-gutter-y: 1.25rem; }
+
+            /* Reduce section vertical padding */
+            .container-fluid.py-5              { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+            .container.py-5                    { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+
+            /* About — fix image heights */
+            #about .col-6 img                  { max-height: 160px; object-fit: cover; width: 100%; }
+            #about .h-75                        { height: auto !important; }
+            #about .h-25                        { height: auto !important; min-height: 52px; }
             .about-text-col                     { text-align: center; }
             .about-text-col .d-flex             { justify-content: center; }
+            .about-text-col .row.g-3            { justify-content: center; }
+
+            /* Features — smaller icons */
+            #features .fa-5x                    { font-size: 2.5em !important; }
+
+            /* Projects left panel */
+            #projects .bg-primary.p-5           { padding: 1.75rem !important; }
+            #projects .display-1                { font-size: 3rem !important; }
+
+            /* Services CTA box */
+            #services .d-flex.align-items-center.bg-light {
+                flex-direction: column; text-align: center; padding: 1.25rem;
+            }
+            #services .d-flex.align-items-center.bg-light .btn-square {
+                width: 64px !important; height: 64px !important; margin-bottom: .75rem;
+            }
+            #services .d-flex.align-items-center.bg-light h3 { font-size: 1rem !important; }
+
+            /* Testimonial image padding */
+            .testimonial-img                    { padding: 30px 0 30px 50px; }
+            .testimonial-text                   { padding-top: 1rem; }
+        }
+
+        @media (max-width: 575.98px) {
+            /* Hero heading smaller on very small screens */
+            .hero-header h1                     { font-size: 2.2rem !important; }
+            /* Section headings */
+            #about h1, #features h1,
+            #projects h1, #services h1          { font-size: 1.75rem !important; }
+            /* Tightest gutters */
+            .row.g-5                            { --bs-gutter-x: .75rem; }
+            /* Feature items full width */
+            #features .col-md-6                 { text-align: center; }
+            /* Service grid: full width cards */
+            #services .col-md-6                 { width: 100%; }
+            /* Newsletter/contact padding */
+            .newsletter-text .p-4, .newsletter-text .p-5 { padding: 1.5rem !important; }
         }
 
         /* ---- FOOTER MAROON ---- */
         .footer-maroon                          { background-color: #5E0D18 !important; }
 
+        /* ---- CONTACT SECTION ---- */
+        .contact-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(139,26,42,.08);
+            height: 100%;
+            transition: transform .3s;
+        }
+        .contact-card:hover                     { transform: translateY(-4px); }
+        .contact-card .fa                       { color: #8B1A2A; }
+        .contact-card h5                        { color: #2C0A10; margin: .75rem 0 .5rem; font-size: 1.1rem; }
+        .contact-card p                         { color: #7A5050; font-size: .95rem; margin: 0; line-height: 1.6; }
+
+        /* ---- QUOTE MODAL ---- */
+        #quoteModal .modal-header               { background: #8B1A2A; }
+        #quoteModal .modal-title                { color: #fff !important; font-size: 1.3rem; }
+        #quoteModal .modal-body                 { padding: 2rem; }
+        #quoteModal .form-control,
+        #quoteModal select,
+        #quoteModal textarea {
+            border: 1.5px solid rgba(139,26,42,.2);
+            border-radius: 6px;
+            font-size: 15px;
+            color: #2C0A10;
+        }
+        #quoteModal .form-control:focus,
+        #quoteModal select:focus,
+        #quoteModal textarea:focus {
+            border-color: #8B1A2A !important;
+            box-shadow: 0 0 0 3px rgba(139,26,42,.15) !important;
+        }
+        #quoteModal select                      { appearance: auto; }
+        #quoteModal textarea                    { resize: none; }
+        @media (max-width: 575.98px) {
+            #quoteModal .modal-body             { padding: 1.25rem; }
+            #quoteModal .row.g-3 .col-sm-6      { width: 100%; }
+        }
+
+        /* ---- WHATSAPP FLOATING BUTTON ---- */
+        .whatsapp-float {
+            position: fixed;
+            display: none;
+            right: 45px;
+            bottom: 105px;          /* sits just above back-to-top */
+            z-index: 99;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            line-height: 48px;
+            box-shadow: 0 4px 16px rgba(37,211,102,.45);
+            transition: background .25s, transform .25s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background: #1DA851;
+            color: #fff;
+            transform: scale(1.1);
+        }
+        @media (max-width: 575.98px) {
+            .whatsapp-float             { right: 20px; bottom: 85px; }
+            .back-to-top                { right: 20px !important; bottom: 20px !important; }
+        }
+
         /* ---- FIX RIGHT-SIDE OVERFLOW (Bootstrap gutter bleed) ---- */
-        html, body                              { overflow-x: hidden; }
+        /* overflow-x: clip does NOT create a scroll container, so sticky navbar stays intact */
+        body                                    { overflow-x: clip; }
 
         /* ---- HEADINGS: bigger, bolder, centered ---- */
         h1, h2, h3, h4, h5                      { font-weight: 700 !important; }
@@ -228,7 +353,7 @@
     <div class="container-fluid sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
-                <a href="st-interiors.html" class="navbar-brand">
+                <a href="#hero" class="navbar-brand">
                     <h1>ST INTERIORS</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
@@ -606,30 +731,51 @@
     <!-- Testimonial End -->
 
 
-    <!-- Newsletter Start -->
-    <div id="contact" class="container-fluid bg-primary newsletter p-0">
-        <div class="container p-0">
-            <div class="row g-0 align-items-center">
-                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
-                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="">
+    <!-- Contact Section Start -->
+    <div id="contact" class="container-fluid py-5 bg-light">
+        <div class="container py-3">
+            <div class="text-center wow fadeIn mb-5" data-wow-delay="0.1s">
+                <h1>Contact <span class="text-uppercase text-primary bg-light px-2">Us</span></h1>
+                <p class="mt-2" style="color:#7A5050;max-width:520px;margin:0 auto;">We'd love to hear from you. Reach out and let's create something amazing together.</p>
+            </div>
+            <div class="row g-4 justify-content-center mb-5">
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="contact-card">
+                        <i class="fa fa-map-marker-alt fa-3x"></i>
+                        <h5>Address</h5>
+                        <p>123 Anywhere St.,<br>Any City</p>
+                    </div>
                 </div>
-                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-5">
-                        <h1 class="mb-5">Get a <span
-                                class="text-uppercase text-primary bg-white px-2">Free Quote</span></h1>
-                        <div class="position-relative w-100 mb-2">
-                            <input class="form-control border-0 w-100 ps-4 pe-5" type="text"
-                                placeholder="Enter Your Email" style="height: 60px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-2 me-2"><i
-                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                        <p class="mb-0">Contact us at hello@reallygreatsite.com — 123 Anywhere St., Any City</p>
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.2s">
+                    <div class="contact-card">
+                        <i class="fa fa-phone-alt fa-3x"></i>
+                        <h5>Call Us</h5>
+                        <p>+012 345 67890<br><small>Mon – Sat: 9AM – 7PM</small></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="contact-card">
+                        <i class="fa fa-envelope fa-3x"></i>
+                        <h5>Email Us</h5>
+                        <p>hello@reallygreatsite.com</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="contact-card">
+                        <i class="fab fa-whatsapp fa-3x"></i>
+                        <h5>WhatsApp</h5>
+                        <p><a href="https://wa.me/911234567890" target="_blank" style="color:#8B1A2A;text-decoration:none;">Chat with us</a></p>
                     </div>
                 </div>
             </div>
+            <div class="text-center wow fadeIn" data-wow-delay="0.3s">
+                <button class="btn btn-primary px-5 py-3 fw-bold fs-6" data-bs-toggle="modal" data-bs-target="#quoteModal">
+                    Get a Free Quote &nbsp;<i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </div>
-    <!-- Newsletter End -->
+    <!-- Contact Section End -->
 
 
     <!-- Footer Start -->
@@ -637,7 +783,7 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="st-interiors.html" class="d-inline-block mb-3">
+                    <a href="#hero" class="d-inline-block mb-3">
                         <h1 class="text-white">ST INTERIORS</h1>
                     </a>
                     <p class="mb-0">We transform your ideas into modern, functional, and aesthetically stunning spaces. Design Your Dream — We Inspire Your Style!</p>
@@ -699,8 +845,61 @@
     <!-- Footer End -->
 
 
+    <!-- Quote Modal -->
+    <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 py-3 px-4">
+                    <h5 class="modal-title" id="quoteModalLabel">Get a Free Quote</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">Fill in your details and we'll get back to you within 24 hours.</p>
+                    <form onsubmit="return false;">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <input class="form-control ps-3" type="text" placeholder="Your Full Name" style="height:50px;">
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control ps-3" type="email" placeholder="Email Address" style="height:50px;">
+                            </div>
+                            <div class="col-sm-6">
+                                <input class="form-control ps-3" type="tel" placeholder="Phone / WhatsApp No." style="height:50px;">
+                            </div>
+                            <div class="col-12">
+                                <select class="form-control ps-3" style="height:50px;">
+                                    <option value="">Select a Service…</option>
+                                    <option>ACP Resort Work</option>
+                                    <option>ACP Elevation Work</option>
+                                    <option>LED Designs</option>
+                                    <option>Roofing &amp; Welding</option>
+                                    <option>All Interiors &amp; Exteriors</option>
+                                    <option>House of Plywood</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control ps-3 pt-3" rows="3" placeholder="Your Message (optional)"></textarea>
+                            </div>
+                            <div class="col-12 mt-1">
+                                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">
+                                    Send Quote Request &nbsp;<i class="fa fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quote Modal End -->
+
     <!-- Back to Top -->
     <a href="#!" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/911234567890" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 
     <!-- JavaScript Libraries -->
@@ -713,6 +912,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- WhatsApp float + Quote modal auto-popup -->
+    <script>
+        // WhatsApp button show/hide
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.whatsapp-float').fadeIn('slow');
+            } else {
+                $('.whatsapp-float').fadeOut('slow');
+            }
+        });
+
+        // Show quote modal once after first scroll (once per session)
+        $(window).one('scroll.quotePopup', function () {
+            if (!sessionStorage.getItem('quoteShown')) {
+                setTimeout(function () {
+                    var quoteModal = new bootstrap.Modal(document.getElementById('quoteModal'));
+                    quoteModal.show();
+                    sessionStorage.setItem('quoteShown', '1');
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 
 </html>
