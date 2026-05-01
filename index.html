@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/st-logo.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,19 +123,18 @@
         .sticky-top.bg-white                { background-color: #8B1A2A !important; }
         .sticky-top.bg-white.shadow-sm      { box-shadow: 0 2px 14px rgba(94,13,24,.4) !important; }
 
-        /* Hero: remove the negative pull-up margin now that navbar is always present */
-        .hero-header                        { margin-top: 0 !important; padding-top: 90px !important; }
+        /* Hero: fixed navbar is out of flow — padding handled in hero block below */
+        .hero-header                        { margin-top: 0 !important; }
 
         /* Mobile collapsed menu */
         @media (max-width: 991.98px) {
             .navbar-collapse                { background-color: #8B1A2A; padding: 12px 0 16px; }
             .navbar .dropdown-menu          { background-color: #6E1422 !important; border: none; }
             .navbar .dropdown-menu .dropdown-item { color: #FAF3E8 !important; }
-            .hero-header                    { padding-top: 80px !important; }
+            .hero-header > .container       { padding-top: 76px !important; padding-bottom: 2rem !important; }
         }
 
-        /* Nav brand & link colours — white on maroon */
-        .navbar-brand h1                    { color: #fff !important; }
+        /* Nav link colours — white on maroon */
         .navbar .navbar-nav .nav-link       { color: rgba(255,255,255,.88) !important; }
         .navbar .navbar-nav .nav-link:hover,
         .navbar .navbar-nav .nav-link.active{ color: #FAF3E8 !important; }
@@ -212,6 +211,29 @@
             #services .d-flex.align-items-center.bg-light .px-3 { padding: .75rem !important; }
             /* About social row wraps cleanly */
             .about-text-col .d-flex.flex-wrap   { gap: .5rem !important; }
+            /* About images — stack full-width on xs */
+            #about .col-6                       { width: 100% !important; flex: 0 0 100%; max-width: 100%; }
+            #about .col-6 img                   { max-height: 240px; width: 100%; object-fit: cover; }
+            /* Testimonial — tighter padding on xs */
+            .testimonial-img                    { padding: 20px 0 20px 30px; }
+            .testimonial-img::before            { width: calc(40% + 30px); }
+        }
+
+        /* ---- ABOUT — tall image layout for landscape images (desktop) ---- */
+        @media (min-width: 992px) {
+            #about .col-6:first-child > img     { height: 460px; width: 100%; object-fit: cover; object-position: center; }
+            #about .col-6:last-child            { height: 460px; }
+            #about img.h-75                     { height: 75% !important; width: 100%; object-fit: cover; object-position: center; display: block; }
+            #about .h-25                        { height: 25% !important; }
+        }
+
+        /* ---- FOOTER LOGO ---- */
+        .footer-logo                            { height: 100px; border-radius: 10px; }
+        @media (max-width: 991.98px) {
+            .footer-logo                        { height: 80px; }
+        }
+        @media (max-width: 575.98px) {
+            .footer-logo                        { height: 88px; }
         }
 
         /* ---- FOOTER MAROON ---- */
@@ -331,12 +353,27 @@
         /* Highlighted word inside headings — make the span pop more */
         h1 span.text-primary                    { font-size: inherit; }
 
+        /* ---- HERO CAROUSEL — consistent slide height + mobile box fix ---- */
+        .header-carousel img                { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; }
+        @media (max-width: 991.98px) {
+            .header-carousel                { padding: 20px 55px 20px 0; }
+        }
+        @media (max-width: 767.98px) {
+            .header-carousel                { padding: 30px 55px 30px 0; }
+            .header-carousel .owl-dots      { right: 10px; }
+        }
+
         /* ---- HERO YELLOW/WARM TONE ---- */
-        /* Strip the blue bg-image from the element, put it on ::before with a warm filter */
         .hero-header {
             position: relative;
             background-color: #FAF3E8 !important;
             background-image: none !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-bottom: 2rem !important;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         .hero-header::before {
             content: '';
@@ -346,10 +383,16 @@
             filter: sepia(0.25) saturate(0.85) brightness(1.12);
             z-index: 0;
         }
-        /* Keep all hero content above the filtered bg */
         .hero-header > .container {
             position: relative;
             z-index: 1;
+            padding-top: 88px !important;
+            padding-bottom: 3rem !important;
+            width: 100%;
+        }
+        .hero-header .row.mb-5              { margin-bottom: 2rem !important; }
+        @media (max-width: 767.98px) {
+            .hero-header                    { align-items: flex-start; min-height: auto; }
         }
     </style>
 </head>
@@ -370,7 +413,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
                 <a href="#hero" class="navbar-brand">
-                    <h1>ST INTERIORS</h1>
+                    <img src="img/st-logo.png" alt="ST Interiors & Exteriors" style="height:48px; border-radius:8px;">
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -405,9 +448,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="owl-carousel header-carousel animated fadeIn">
-                        <img class="img-fluid" src="img/hero-slider-1.jpg" alt="">
+                        <img class="img-fluid" src="img/hero-slider-1.png" alt="">
                         <img class="img-fluid" src="img/hero-slider-2.jpg" alt="">
-                        <img class="img-fluid" src="img/hero-slider-3.jpg" alt="">
+                        <img class="img-fluid" src="img/hero-slider-3.png" alt="">
                     </div>
                 </div>
             </div>
@@ -457,10 +500,10 @@
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="img/about-1.jpg" alt="">
+                            <img class="img-fluid" src="img/about-1.png" alt="">
                         </div>
                         <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
-                            <img class="img-fluid h-75" src="img/about-2.jpg" alt="">
+                            <img class="img-fluid h-75" src="img/about-2.png" alt="">
                             <div class="h-25 d-flex align-items-center text-center bg-primary px-4">
                                 <h4 class="text-white lh-base mb-0">Craftsmanship & Passion for Design</h4>
                             </div>
@@ -553,7 +596,7 @@
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
                             <div class="project-item position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/project-1.jpg" alt="">
+                                <img class="img-fluid w-100" src="img/project-1.png" alt="">
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">ACP Resort</h4>
                                     <small class="text-white">Luxury Structures</small>
@@ -562,7 +605,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                             <div class="project-item position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/project-2.jpg" alt="">
+                                <img class="img-fluid w-100" src="img/project-2.png" alt="">
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">ACP Elevation</h4>
                                     <small class="text-white">Modern Facades</small>
@@ -571,7 +614,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
                             <div class="project-item position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/project-3.jpg" alt="">
+                                <img class="img-fluid w-100" src="img/project-3.png" alt="">
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">LED Designs</h4>
                                     <small class="text-white">Illumination</small>
@@ -580,7 +623,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                             <div class="project-item position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/project-4.jpg" alt="">
+                                <img class="img-fluid w-100" src="img/project-4.png" alt="">
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">Interiors</h4>
                                     <small class="text-white">Full Fit-outs</small>
@@ -589,7 +632,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.6s">
                             <div class="project-item position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/project-5.jpg" alt="">
+                                <img class="img-fluid w-100" src="img/project-5.png" alt="">
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">Plywood</h4>
                                     <small class="text-white">Premium Materials</small>
@@ -656,7 +699,7 @@
                         <div class="col-md-6 wow fadeIn" data-wow-delay="0.6s">
                             <div class="service-item h-100 d-flex flex-column justify-content-center bg-light">
                                 <a href="#!" class="service-img position-relative mb-4">
-                                    <img class="img-fluid w-100" src="img/service-3.jpg" alt="">
+                                    <img class="img-fluid w-100" src="img/service-3.png" alt="">
                                     <h3>LED Designs</h3>
                                 </a>
                                 <p class="mb-0">Custom LED signage, backlit panels, and architectural LED designs that add life, identity, and elegance to your brand or home.</p>
@@ -665,7 +708,7 @@
                         <div class="col-md-6 wow fadeIn" data-wow-delay="0.8s">
                             <div class="service-item h-100 d-flex flex-column justify-content-center bg-primary">
                                 <a href="#!" class="service-img position-relative mb-4">
-                                    <img class="img-fluid w-100" src="img/service-4.jpg" alt="">
+                                    <img class="img-fluid w-100" src="img/service-4.png" alt="">
                                     <h3>Roofing & Welding</h3>
                                 </a>
                                 <p class="mb-0">Skilled welding team delivering precision and safety in every fabrication for homes, sheds, commercial buildings, and custom structures.</p>
@@ -796,7 +839,7 @@
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <a href="#hero" class="d-inline-block mb-3">
-                        <h1 class="text-white">ST INTERIORS</h1>
+                        <img src="img/st-logo.png" alt="ST Interiors & Exteriors" class="footer-logo">
                     </a>
                     <p class="mb-0">We transform your ideas into modern, functional, and aesthetically stunning spaces. Design Your Dream — We Inspire Your Style!</p>
                 </div>
@@ -920,6 +963,11 @@
 
     <!-- WhatsApp float + Quote modal auto-popup -->
     <script>
+        // Close navbar collapse when a nav link is clicked (mobile/tablet)
+        $('.navbar-nav .nav-link').on('click', function () {
+            $('#navbarCollapse').collapse('hide');
+        });
+
         // WhatsApp button show/hide
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
